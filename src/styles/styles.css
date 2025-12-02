@@ -1,0 +1,141 @@
+/* Layout */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  background: #4cafaf;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* for smaller screens */
+}
+
+.header h1 {
+  font-size: 1.2rem;
+}
+
+.header nav {
+  margin-top: 10px;
+}
+
+.header nav a {
+  color: white;
+  margin: 0 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.header nav a:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-top: auto;
+  font-size: 0.85rem;
+}
+
+/* Auth */
+.auth-container {
+  max-width: 400px;
+  width: 90%;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input {
+  display: block;
+  width: 94%;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.button {
+  width: 100%;
+  padding: 12px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.button:hover {
+  background: #45a049;
+}
+
+/* Dashboard */
+.dashboard {
+  max-width: 600px;
+  width: 90%;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header nav {
+    margin-top: 10px;
+  }
+
+  .auth-container,
+  .dashboard {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .input,
+  .button {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .header h1 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header nav a {
+    display: block;
+    margin: 5px 0;
+  }
+
+  .auth-container {
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .button {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}
