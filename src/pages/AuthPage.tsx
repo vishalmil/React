@@ -43,17 +43,17 @@ const users = await getUsers();
 const existingUser = users.find((u: User) => u.email === formData.email);
 
 if (existingUser) {
-  alert("Email already registered. Please login 🔒");
+  alert("Email already registered. Please login");
   return;
 }
 
 await addUser({ ...formData, role: "user" });
-alert("Sign Up successful! Please login 🎉");
+alert("Sign Up successful! Please login");
 navigate("/");
 
 } catch (error) {
 console.error(error);
-alert("Signup failed. Try again ❌");
+alert("Signup failed. Try again");
 }
 };
 
@@ -71,17 +71,17 @@ try {
 const user = await loginUser(formData.email, formData.password);
 
 if (!user) {
-  alert("Invalid credentials ❌");
+  alert("Invalid credentials");
   return;
 }
 
 login(user);
-alert("Login Successful 🎉");
+alert("Login Successful");
 navigate("/dashboard");
 
 } catch (error) {
 console.error(error);
-alert("Login failed. Try again ❌");
+alert("Login failed. Try again");
 }
 };
 

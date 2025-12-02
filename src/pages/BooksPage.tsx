@@ -38,7 +38,7 @@ const BooksPage: React.FC = () => {
   // Fetch book details
   const handleSelectBook = async (book: Book) => {
     setSelectedBook(book);
-    const workId = book.key.split("/").pop(); // get work id from /works/OL12345W
+    const workId = book.key.split("/").pop();
     if (workId) {
       const details = await fetchBookDetails(workId);
       setBookDetails(details);

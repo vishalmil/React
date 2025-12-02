@@ -6,7 +6,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="dashboard">
-      <h2>Welcome to Dashboard 🎉</h2>
+      <h2>Welcome to Dashboard</h2>
       {parsedUser && (
         <p>
           Hello <strong>{parsedUser.name}</strong> ({parsedUser.email})

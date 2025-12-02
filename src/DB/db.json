@@ -1,0 +1,180 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Asha Sharma",
+      "email": "asha@gmail.com",
+      "gender": "female",
+      "phone": "+91-9876543210",
+      "password": "Test@123",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "name": "Asha Karma",
+      "email": "ashak@gmail.com",
+      "gender": "female",
+      "phone": "+91-1023456789",
+      "password": "Test@123",
+      "role": "user"
+    },
+    {
+      "id": "3",
+      "name": "Vishal",
+      "email": "vishal@gmail.com",
+      "password": "Test@123",
+      "dob": "2025-11-03",
+      "gender": "male",
+      "phone": "9465642138",
+      "role": "user"
+    },
+    {
+      "id": "4",
+      "name": "Vishal",
+      "email": "vishal@gmail.com",
+      "password": "Test@123",
+      "dob": "2025-11-03",
+      "gender": "male",
+      "phone": "9465642138",
+      "role": "admin"
+    }
+  ],
+  "investments": [
+    {
+      "id": "2",
+      "name": "ICICI Prudential",
+      "type": "Mutual Fund",
+      "amount": 7500,
+      "purchaseDate": "2025-09-20",
+      "currentValue": 7300
+    },
+    {
+      "id": "3",
+      "name": "Reliance Industries",
+      "type": "Equity",
+      "amount": 15000,
+      "purchaseDate": "2025-08-10",
+      "currentValue": 16200
+    },
+    {
+      "id": "4",
+      "name": "Tata Motors",
+      "type": "Equity",
+      "amount": 12000,
+      "purchaseDate": "2025-07-05",
+      "currentValue": 11800
+    },
+    {
+      "id": "6",
+      "name": "Axis Bluechip Fund",
+      "type": "Mutual Fund",
+      "amount": 10000,
+      "purchaseDate": "2025-05-22",
+      "currentValue": 9800
+    },
+    {
+      "id": "8",
+      "name": "HDFC Corporate Bond",
+      "type": "Debt",
+      "amount": 30000,
+      "purchaseDate": "2025-03-15",
+      "currentValue": 31000
+    },
+    {
+      "id": "9",
+      "name": "Kotak Flexicap Fund",
+      "type": "Mutual Fund",
+      "amount": 8000,
+      "purchaseDate": "2025-02-28",
+      "currentValue": 8500
+    },
+    {
+      "id": "10",
+      "name": "Adani Enterprises",
+      "type": "Equity",
+      "amount": 22000,
+      "purchaseDate": "2025-01-12",
+      "currentValue": 21000
+    },
+    {
+      "id": "11",
+      "name": "LIC Bond",
+      "type": "Debt",
+      "amount": 15000,
+      "purchaseDate": "2024-12-05",
+      "currentValue": 15200
+    },
+    {
+      "id": "12",
+      "name": "Franklin India Fund",
+      "type": "Mutual Fund",
+      "amount": 6000,
+      "purchaseDate": "2024-11-19",
+      "currentValue": 5900
+    },
+    {
+      "id": "13",
+      "name": "Bharti Airtel",
+      "type": "Equity",
+      "amount": 17000,
+      "purchaseDate": "2024-10-10",
+      "currentValue": 17500
+    },
+    {
+      "id": "14",
+      "name": "ICICI Bond",
+      "type": "Debt",
+      "amount": 28000,
+      "purchaseDate": "2024-09-25",
+      "currentValue": 28500
+    },
+    {
+      "id": "15",
+      "name": "DSP Tax Saver Fund",
+      "type": "Mutual Fund",
+      "amount": 9000,
+      "purchaseDate": "2024-08-14",
+      "currentValue": 8800
+    },
+    {
+      "id": "16",
+      "name": "Wipro Ltd",
+      "type": "Equity",
+      "amount": 14000,
+      "purchaseDate": "2024-07-01",
+      "currentValue": 14500
+    },
+    {
+      "id": "17",
+      "name": "Tata Bond",
+      "type": "Debt",
+      "amount": 35000,
+      "purchaseDate": "2024-06-20",
+      "currentValue": 36000
+    },
+    {
+      "id": "18",
+      "name": "Nippon India Fund",
+      "type": "Mutual Fund",
+      "amount": 11000,
+      "purchaseDate": "2024-05-05",
+      "currentValue": 11500
+    },
+    {
+      "id": "19",
+      "name": "HCL Technologies",
+      "type": "Equity",
+      "amount": 20000,
+      "purchaseDate": "2024-04-18",
+      "currentValue": 19800
+    },
+    {
+      "id": "20",
+      "name": "IDFC Bond",
+      "type": "Debt",
+      "amount": 40000,
+      "purchaseDate": "2024-03-10",
+      "currentValue": 41000
+    }
+  ]
+}

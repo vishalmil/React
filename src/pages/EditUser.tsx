@@ -39,7 +39,7 @@ alert("User Updated Successfully ✔");
 onUpdateSuccess();
 } catch (error) {
 console.error(error);
-alert("Update failed ❌");
+alert("Update failed");
 }
 };
 

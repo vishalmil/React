@@ -13,26 +13,26 @@ export const validateSignup = (formData: any): string | null => {
 const { name, email, password, dob, gender, phone } = formData;
 
 if (!name || !email || !password || !dob || !gender || !phone) {
-return "Please fill in all fields ❌";
+return "Please fill in all fields";
 }
 
-if (!isValidEmail(email)) return "Invalid email format 📧";
+if (!isValidEmail(email)) return "Invalid email format";
 
 if (password.length < 6)
-return "Password must be at least 6 characters 🔑";
+return "Password must be at least 6 characters";
 
 if (!isValidPhone(phone))
-return "Please enter a valid phone number 📱";
+return "Please enter a valid phone number";
 
-if (!isValidDOB(dob)) return "Invalid Date of Birth 🎂";
+if (!isValidDOB(dob)) return "Invalid Date of Birth";
 
 return null; // no validation errors
 };
 
 export const validateLogin = (email: string, password: string): string | null => {
-if (!email || !password) return "Please enter both Email and Password ❌";
+if (!email || !password) return "Please enter both Email and Password";
 
-if (!isValidEmail(email)) return "Invalid email format 📧";
+if (!isValidEmail(email)) return "Invalid email format";
 
 return null;
 };
