@@ -9,7 +9,7 @@ interface Props {
 
 const EditInvestment: React.FC<Props> = ({ selectedInvestment, onUpdateSuccess }) => {
     const [formData, setFormData] = useState<Investment>({
-        id: 0,
+        id: "",
         name: "",
         type: "",
         amount: 0,

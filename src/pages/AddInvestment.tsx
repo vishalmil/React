@@ -3,7 +3,7 @@ import { addInvestment, getInvestments } from "../service/investmentService";
 
 const AddInvestment: React.FC = () => {
     const [formData, setFormData] = useState({
-        id: 0,
+        id: "",
         name: "",
         type: "",
         amount: 0,
@@ -25,13 +25,12 @@ const AddInvestment: React.FC = () => {
 
         try {
             const investments = await getInvestments();
-            const maxId = investments.length > 0 ? investments.length + 1 : 0;
-            const newUser = { ...investments, id: maxId };
+            formData.id = String(investments.length > 0 ? investments.length + 1 : 0);
             await addInvestment({ ...formData });
 
             alert("Investment added successfully");
             setFormData({
-                id: 0,
+                id: "",
                 name: "",
                 type: "",
                 amount: 0,
@@ -45,7 +44,7 @@ const AddInvestment: React.FC = () => {
     };
 
     return (
-        <div style={{ width: "400px", marginLeft: "20px" }}>
+        <div className="add-investment-container">
             <h2>Add New Investment</h2>
 
             <input

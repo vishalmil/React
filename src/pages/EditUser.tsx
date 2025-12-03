@@ -9,7 +9,7 @@ interface Props {
 
 const EditUser: React.FC<Props> = ({ selectedUser, onUpdateSuccess }) => {
   const [formData, setFormData] = useState<User>({
-    id: 0,
+    id: "",
     name: "",
     email: "",
     password: "",

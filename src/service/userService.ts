@@ -13,7 +13,7 @@ export const getUsers = async () => {
   }
 };
 
-export const getUserById = async (id: number) => {
+export const getUserById = async (id: string) => {
   try {
     const response = await axios.get(`${API_URL}/${id}`);
     return response.data;
@@ -36,13 +36,16 @@ export const loginUser = async (email: string, password: string): Promise<User |
 export const addUser = async (user: User): Promise<User> => {
   const users = await getUsers();
   const maxId = users.length > 0 ? users.length + 1 : 0;
-  const newUser = { ...user, id: maxId };
+  const newUser = { ...user, id: String(maxId) };
   const response = await axios.post<User>(API_URL, newUser);
   return response.data;
 };
 
-// UPDATE USER (PUT)
-export const updateUser = async (id: number, updatedUser: User): Promise<User> => {
+export const updateUser = async (id: string, updatedUser: User): Promise<User> => {
   const response = await axios.put(`${API_URL}/${id}`, updatedUser);
   return response.data;
 };
+
+export const deleteUser = async (id: string): Promise<void> => {
+  await axios.delete(`${API_URL}/${id}`);
+}

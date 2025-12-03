@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { User } from "../type/user";
-import { getUsers } from "../service/userService";
+import { deleteUser, getUsers } from "../service/userService";
 import EditUser from "./EditUser";
 
 const UsersList: React.FC = () => {
@@ -23,6 +23,11 @@ const UsersList: React.FC = () => {
     loadUsers();
   }, []);
 
+  const handleDelete = (id: any) => {
+    deleteUser(id);
+    loadUsers();
+  }
+
   if (loading) return <h3>Loading...</h3>;
 
   return (
@@ -43,12 +48,11 @@ const UsersList: React.FC = () => {
           <p>Phone: {user.phone}</p>
           <p>Role: {user.role}</p>
 
-          <button
-            style={{ marginTop: 10 }}
-            onClick={() => setSelectedUser(user)}
-          >
+          <button style={{ marginTop: 10 }} onClick={() => setSelectedUser(user)} >
             Edit User
-          </button>
+          </button><br />
+
+          <button style={{ marginTop: 10 }} onClick={() => handleDelete(user.id)}>Delete User</button>
         </div>
       ))}
 

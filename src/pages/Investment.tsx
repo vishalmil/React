@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Investment } from "../type/investment";
-import { getInvestments } from "../service/investmentService";
+import { deleteInvestment, getInvestments } from "../service/investmentService";
 import EditInvestment from "./EditInvestment";
 import { AuthContext } from "../authContext/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -26,15 +26,28 @@ const InvestmentList: React.FC = () => {
     loadInvestments();
   }, []);
 
+  const handleDelete = async (id: string) => {
+    if (!window.confirm("Are you want to delete this investment?"))
+      return;
+    await deleteInvestment(id);
+    loadInvestments();
+  }
+
+  const handlePurchase = async (id: string) => {
+    alert("purchased");
+  }
+
   if (loading) return <h3>Loading...</h3>;
 
   return (
     <div style={{ padding: 20 }}>
       <h2>Investment Data</h2>
       <div style={{ textAlign: "right", marginRight: "20px" }}>
-        <button style={{ marginBottom: 10 }} onClick={() => navigate("/addInvestment")} >
-          Add New Investment
-        </button>
+        {user?.role?.toLowerCase() === "admin" && (
+          <button style={{ marginBottom: 10 }} onClick={() => navigate("/addInvestment")} >
+            Add New Investment
+          </button>
+        )}
       </div>
 
       {investments.map((inv) => (
@@ -53,15 +66,22 @@ const InvestmentList: React.FC = () => {
           <p>PurchesDate: {inv.purchaseDate}</p>
           <p>CurrentValue: {inv.currentValue}</p>
           {user?.role?.toLowerCase() === "admin" && (
-            <button style={{ marginTop: 10 }} onClick={() => setSelectedInvestment(inv)} >
-              Edit Investment
+            <>
+              <button style={{ marginTop: 10 }} onClick={() => setSelectedInvestment(inv)} >
+                Edit Investment
+              </button>
+
+              <br />
+              <button style={{ marginTop: 10 }} onClick={() => handleDelete(inv.id)} >
+                Delete Investment
+              </button>
+            </>
+          )}
+          {user?.role.toLocaleLowerCase() !== "admin" && (
+            <button style={{ marginTop: 10 }} onClick={() => handlePurchase(inv.id)}>
+              Purchase
             </button>
           )}
-          <br />
-          {/* <button style={{ marginTop: 10 }} onClick={() => setSelectedInvestment(inv)} >
-            Add Investment
-          </button> */}
-
         </div>
       ))}
 

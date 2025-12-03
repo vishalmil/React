@@ -20,7 +20,7 @@ export async function getInvestments(): Promise<Investment[]> {
   }
 }
 
-export const updateInvestment = async (id: number, updatedInvestment: Investment): Promise<Investment> => {
+export const updateInvestment = async (id: string, updatedInvestment: Investment): Promise<Investment> => {
   try {
     const response = await fetch(`${API_URL}/${id}`, {
       method: "PUT",
@@ -56,4 +56,10 @@ export const addInvestment = async (newInvestment: Investment) => {
     console.error("Add Investment API error", error);
     throw error;
   }
+};
+
+export const deleteInvestment = async (id: string): Promise<void> => {
+  await fetch(`${API_URL}/${id}`, {
+    method: "DELETE",
+  });
 };
