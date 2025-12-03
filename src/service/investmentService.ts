@@ -40,3 +40,20 @@ export const updateInvestment = async (id: number, updatedInvestment: Investment
     throw error;
   }
 };
+
+export const addInvestment = async (newInvestment: Investment) => {
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newInvestment),
+    });
+    return await response.json();
+  }
+  catch (error) {
+    console.error("Add Investment API error", error);
+    throw error;
+  }
+};

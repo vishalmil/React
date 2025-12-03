@@ -1,4 +1,3 @@
-// src/pages/BooksPage.tsx
 import React, { useState, useEffect } from "react";
 import { fetchTrendingBooks, searchBooks, fetchBookDetails } from "../api/booksApi";
 import "../styles/styles.css";

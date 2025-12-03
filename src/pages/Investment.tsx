@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Investment } from "../type/investment";
 import { getInvestments } from "../service/investmentService";
 import EditInvestment from "./EditInvestment";
+import { AuthContext } from "../authContext/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const InvestmentList: React.FC = () => {
   const [investments, setInvestments] = useState<Investment[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [selectedInvestment, setSelectedInvestment] = useState<Investment | null>(null);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
 
   const loadInvestments = () => {
     getInvestments()
@@ -26,6 +31,11 @@ const InvestmentList: React.FC = () => {
   return (
     <div style={{ padding: 20 }}>
       <h2>Investment Data</h2>
+      <div style={{ textAlign: "right", marginRight: "20px" }}>
+        <button style={{ marginBottom: 10 }} onClick={() => navigate("/addInvestment")} >
+          Add New Investment
+        </button>
+      </div>
 
       {investments.map((inv) => (
         <div
@@ -42,12 +52,16 @@ const InvestmentList: React.FC = () => {
           <p>Amount: {inv.amount}</p>
           <p>PurchesDate: {inv.purchaseDate}</p>
           <p>CurrentValue: {inv.currentValue}</p>
-          <button
-            style={{ marginTop: 10 }}
-            onClick={() => setSelectedInvestment(inv)}
-          >
-            Edit Investment
-          </button>
+          {user?.role?.toLowerCase() === "admin" && (
+            <button style={{ marginTop: 10 }} onClick={() => setSelectedInvestment(inv)} >
+              Edit Investment
+            </button>
+          )}
+          <br />
+          {/* <button style={{ marginTop: 10 }} onClick={() => setSelectedInvestment(inv)} >
+            Add Investment
+          </button> */}
+
         </div>
       ))}
 

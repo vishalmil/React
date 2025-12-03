@@ -28,9 +28,7 @@ const AuthPage: React.FC = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // -----------------------------
   // SIGN UP
-  // -----------------------------
   const handleSignup = async () => {
     const error = validateSignup(formData);
     if (error) {
@@ -57,9 +55,8 @@ const AuthPage: React.FC = () => {
     }
   };
 
-  // -----------------------------
+
   // LOGIN
-  // -----------------------------
   const handleLogin = async () => {
     const error = validateLogin(formData.email, formData.password);
     if (error) {
