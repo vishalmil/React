@@ -9,38 +9,42 @@ const Header: React.FC = () => {
 
   const handleLogout = () => {
     logout();
-    navigate("/"); // redirect to login
+    navigate("/");
   };
 
   return (
     <header className="header">
       <h1>My App</h1>
 
-      <nav>
-        {isLoggedIn ? (
-          <>
-            {/* <Link to="/">Home</Link> */}
-            <Link to="/dashboard">Dashboard</Link>
-            <Link to="/books">Books</Link>
-            {user?.role.toLowerCase() == "admin" ?
-            <Link to="/users">Users</Link>
-            : null}
-            <Link to="/investments">Investments</Link>
+      <nav style={{ display: "flex", gap: "20px" }}>
 
-
-            <button onClick={handleLogout} className="logout-button">
-              Logout
-            </button>
-          </>
-        ) : (
+        {/* Not Logged In */}
+        {!isLoggedIn && (
           <>
             <Link to="/">Login</Link>
             <Link to="/signup">Sign Up</Link>
           </>
         )}
+
+        {/* Logged In */}
+        {isLoggedIn && user && (
+          <>
+            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/investments">Investments</Link>
+            <Link to="/books">Books</Link>
+
+            {/* Admin Only */}
+            {user.role?.toLowerCase() === "admin" && (
+              <Link to="/users">Users</Link>
+            )}
+
+            <button onClick={handleLogout} className="logout-button">Logout</button>
+          </>
+        )}
+
       </nav>
     </header>
   );
 };
 
-export default Header;
+export default Header

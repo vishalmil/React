@@ -19,3 +19,24 @@ export async function getInvestments(): Promise<Investment[]> {
     throw error;
   }
 }
+
+export const updateInvestment = async (id: number, updatedInvestment: Investment): Promise<Investment> => {
+  try {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(updatedInvestment),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to update investment: ${response.status}`);
+    }
+    return await response.json();
+
+  } catch (error) {
+    console.error("Update Investment API error: ", error);
+    throw error;
+  }
+};

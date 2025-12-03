@@ -28,64 +28,64 @@ const AuthPage: React.FC = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-// -----------------------------
-// SIGN UP
-// -----------------------------
-const handleSignup = async () => {
-const error = validateSignup(formData);
-if (error) {
-alert(error);
-return;
-}
+  // -----------------------------
+  // SIGN UP
+  // -----------------------------
+  const handleSignup = async () => {
+    const error = validateSignup(formData);
+    if (error) {
+      alert(error);
+      return;
+    }
 
-try {
-const users = await getUsers();
-const existingUser = users.find((u: User) => u.email === formData.email);
+    try {
+      const users = await getUsers();
+      const existingUser = users.find((u: User) => u.email === formData.email);
 
-if (existingUser) {
-  alert("Email already registered. Please login");
-  return;
-}
+      if (existingUser) {
+        alert("Email already registered. Please login");
+        return;
+      }
 
-await addUser({ ...formData, role: "user" });
-alert("Sign Up successful! Please login");
-navigate("/");
+      await addUser({ ...formData, role: "user" });
+      alert("Sign Up successful! Please login");
+      navigate("/");
 
-} catch (error) {
-console.error(error);
-alert("Signup failed. Try again");
-}
-};
+    } catch (error) {
+      console.error(error);
+      alert("Signup failed. Try again");
+    }
+  };
 
-// -----------------------------
-// LOGIN
-// -----------------------------
-const handleLogin = async () => {
-const error = validateLogin(formData.email, formData.password);
-if (error) {
-alert(error);
-return;
-}
+  // -----------------------------
+  // LOGIN
+  // -----------------------------
+  const handleLogin = async () => {
+    const error = validateLogin(formData.email, formData.password);
+    if (error) {
+      alert(error);
+      return;
+    }
 
-try {
-const user = await loginUser(formData.email, formData.password);
+    try {
+      const user = await loginUser(formData.email, formData.password);
 
-if (!user) {
-  alert("Invalid credentials");
-  return;
-}
+      if (!user) {
+        alert("Invalid credentials");
+        return;
+      }
 
-login(user);
-alert("Login Successful");
-navigate("/dashboard");
+      login(user);
+      alert("Login Successful");
+      navigate("/dashboard");
 
-} catch (error) {
-console.error(error);
-alert("Login failed. Try again");
-}
-};
+    } catch (error) {
+      console.error(error);
+      alert("Login failed. Try again");
+    }
+  };
 
- 
+
   return (
     <div className="auth-container">
       <h2>{isLogin ? "Login" : "Sign Up"}</h2>

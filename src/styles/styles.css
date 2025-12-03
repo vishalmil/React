@@ -12,7 +12,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* for smaller screens */
+  flex-wrap: wrap;
+  /* for smaller screens */
 }
 
 .header h1 {
