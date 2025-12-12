@@ -33,7 +33,7 @@ const EditInvestment: React.FC<Props> = ({ selectedInvestment, onUpdateSuccess }
     const handleUpdate = async () => {
         try {
             await updateInvestment(formData.id!, formData);
-            alert("Investment Updated Successfully ✔");
+            alert("Investment Updated Successfully");
             onUpdateSuccess();
         } catch (error) {
             console.error(error);

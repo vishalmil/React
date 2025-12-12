@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { fetchTrendingBooks, searchBooks, fetchBookDetails } from "../api/booksApi";
 import "../styles/styles.css";
-
-type Book = {
-  key: string;
-  title: string;
-  authors?: { name: string }[];
-  author_name?: string[];
-  cover_id?: number;
-};
+import { Book } from "../type/Book";
 
 const BooksPage: React.FC = () => {
   const [genre, setGenre] = useState("fiction");
@@ -46,6 +39,32 @@ const BooksPage: React.FC = () => {
 
   return (
     <div className="books-container">
+
+      <h2>Search Books</h2>
+      <div style={{ marginBottom: "15px" }}>
+        <input
+          type="text"
+          placeholder="Search by title, author..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          style={{ padding: "8px", width: "70%", marginRight: "10px", marginBottom: "10px" }}
+        />
+        <button onClick={handleSearch} className="button">Search</button>
+      </div>
+
+      <div className="books-list">
+        {searchResults.map((book) => (
+          <div key={book.key} className="book-item" onClick={() => handleSelectBook(book)}>
+            <img
+              src={book.image} alt={book.title} className="image" />
+            <p><strong>{book.title}</strong></p>
+            {book.author_name && <p>By {book.author_name.join(", ")}</p>}
+          </div>
+        ))}
+      </div>
+
+      <hr style={{ margin: "30px 0" }} />
+
       <h2>Trending Books</h2>
       <div style={{ marginBottom: "15px" }}>
         <label>Select Genre: </label>
@@ -61,36 +80,15 @@ const BooksPage: React.FC = () => {
       <div className="books-list">
         {trendingBooks.map((book) => (
           <div key={book.key} className="book-item" onClick={() => handleSelectBook(book)}>
+            <img
+              src={book.image} alt={book.title} className="image" />
             <p><strong>{book.title}</strong></p>
             {book.authors && <p>By {book.authors.map((a) => a.name).join(", ")}</p>}
           </div>
         ))}
       </div>
 
-      <hr style={{ margin: "30px 0" }} />
-
-      <h2>Search Books</h2>
-      <div style={{ marginBottom: "15px" }}>
-        <input
-          type="text"
-          placeholder="Search by title, author..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          style={{ padding: "8px", width: "70%", marginRight: "10px" }}
-        />
-        <button onClick={handleSearch} className="button">Search</button>
-      </div>
-
-      <div className="books-list">
-        {searchResults.map((book) => (
-          <div key={book.key} className="book-item" onClick={() => handleSelectBook(book)}>
-            <p><strong>{book.title}</strong></p>
-            {book.author_name && <p>By {book.author_name.join(", ")}</p>}
-          </div>
-        ))}
-      </div>
-
-      {bookDetails && selectedBook && (
+      {/* {bookDetails && selectedBook && (
         <div className="book-details">
           <h3>{selectedBook.title}</h3>
           {bookDetails.description && (
@@ -101,7 +99,36 @@ const BooksPage: React.FC = () => {
           )}
           {bookDetails.first_publish_date && <p><strong>First Published:</strong> {bookDetails.first_publish_date}</p>}
         </div>
+      )} */}
+
+      {selectedBook && (
+        <div className="modal-overlay" onClick={() => setSelectedBook(null)}>
+          <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+            <button className="close-btn" onClick={() => setSelectedBook(null)}>×</button>
+
+            <img src={selectedBook.image} alt="" className="modal-img" />
+
+            <h2>{selectedBook.title}</h2>
+
+            {bookDetails?.description && (
+              <p>
+                {typeof bookDetails.description === "string"
+                  ? bookDetails.description
+                  : bookDetails.description.value}
+              </p>
+            )}
+
+            {bookDetails?.subjects && (
+              <p><strong>Subjects:</strong> {bookDetails.subjects.slice(0, 6).join(", ")}</p>
+            )}
+
+            {bookDetails?.first_publish_date && (
+              <p><strong>Published:</strong> {bookDetails.first_publish_date}</p>
+            )}
+          </div>
+        </div>
       )}
+
     </div>
   );
 };

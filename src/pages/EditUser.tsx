@@ -35,7 +35,7 @@ const EditUser: React.FC<Props> = ({ selectedUser, onUpdateSuccess }) => {
   const handleUpdate = async () => {
     try {
       await updateUser(formData.id!, formData);
-      alert("User Updated Successfully ✔");
+      alert("User Updated Successfully");
       onUpdateSuccess();
     } catch (error) {
       console.error(error);
